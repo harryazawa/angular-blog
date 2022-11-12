@@ -1,24 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {dataFake} from '../../data/dataFake';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  styleUrls: ['./content.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
+
 export class ContentComponent implements OnInit {
-  photoCover:string = 'https://pwco.com.sg/wp-content/uploads/2020/05/Generic-Profile-Placeholder-v3.png'
-  contentTitle:string = 'NOTICIA EXEMPLO'
-  contentDescription:string = 'BLABLA BLA BLA BLA BLA BLA'
+  photoCover: string = ''
+  contentTitle: string = ''
+  contentDescription: string | string[] = ''
+  private id: string | null = "0"
 
   constructor(
-    private route:ActivatedRoute
-  ) { }
-
-  ngOnInit(): void {
-    this.route.paramMap.subscribe( value =>
-      console.log(value.get("Id"))
-    )
+    private route: ActivatedRoute
+  ) {
   }
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(value =>
+      this.id = value.get("id")
+    )
+    this.setValuesToComponent(this.id)
+  }
+
+  setValuesToComponent(id: string | null) {
+    const result = dataFake.filter(article => article.id == id)[0]
+
+    this.contentTitle = result.title
+    this.contentDescription = result.description
+    this.photoCover = result.photoCover
+  }
 }

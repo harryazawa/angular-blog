@@ -6,10 +6,7 @@
     <h1>{{ contentTitle }}</h1>
     <hr />
   </div>
-  <div class="content__description">
-    <a [routerLink]="['']"> << VOLTAR </a>
-    <p>
-      {{ contentDescription }}
-    </p>
+  <a class="voltar" [routerLink]="['']"> << VOLTAR >> </a>
+  <div class="content__description" [innerHTML]="contentDescription">
   </div>
 </div>

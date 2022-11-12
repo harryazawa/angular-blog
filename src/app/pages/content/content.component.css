@@ -1,8 +1,7 @@
 .container__content{
-  border: solid 1px white;
   width: 100%;
   height: 100vh;
-
+  padding: 10px;
   margin-top: 20px;
 
   display: flex;
@@ -19,10 +18,18 @@
   min-width: 300px;
 }
 
-.content__description{
-  margin-top: 15px;
+.a.voltar{
+  justify-content: center;
+  display: flex;
 }
 
-.content__description > p{
-  color: rgb(198, 197, 197)
+.content__description{
+  padding: 50px;
+  justify-content: center;
+}
+
+.content__description > p {
+  color: rgb(144, 144, 144);
+  margin-top: 20px;
+  text-align: justify;
 }
